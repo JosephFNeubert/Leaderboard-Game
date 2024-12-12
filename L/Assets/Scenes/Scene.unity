@@ -5121,6 +5121,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   maxCollectables: 10
+  collectables:
+  - {fileID: 511974200}
+  - {fileID: 479162104}
+  - {fileID: 1140802378}
+  - {fileID: 1325526446}
+  - {fileID: 40898350}
+  - {fileID: 918364759}
+  - {fileID: 1855741393}
+  - {fileID: 264785536}
+  - {fileID: 1106162428}
+  - {fileID: 1201929054}
   playButton: {fileID: 1103930113}
   currTimeText: {fileID: 1853035901}
 --- !u!54 &1588128221

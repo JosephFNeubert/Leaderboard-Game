@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private int collectablesPicked;
     public int maxCollectables;
+    public GameObject[] collectables;
 
     private bool isPlaying;
 
@@ -44,14 +45,23 @@ public class PlayerController : MonoBehaviour
         startTime = Time.time;
         isPlaying = true;
         playButton.SetActive(false);
+
+        //Contribution
+        foreach(GameObject collectable in collectables)
+        {
+            collectable.SetActive(true);
+        }
     }
 
     public void End()
     {
         timeTaken = Time.time - startTime;
         isPlaying = false;
+        // Testing
+        Debug.Log("Score: " + (-Mathf.RoundToInt(timeTaken * 1000.0f)));
         Leaderboard.instance.SetLeaderboardEntry(-Mathf.RoundToInt(timeTaken * 1000.0f));
         playButton.SetActive(true);
+        collectablesPicked = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,7 +69,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Collectable"))
         {
             collectablesPicked++;
-            Destroy(other.gameObject);
+            //Contribution
+            other.gameObject.SetActive(false);
         }
 
         if (collectablesPicked == maxCollectables)
